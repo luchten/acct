@@ -13,8 +13,47 @@ const firstTitle = document.querySelector('.coluna-1 h2');
 const secondTitle = document.querySelector('.coluna-1 h1');
 const paragraph = document.querySelector('.coluna-1 p');
 const saibaButton = document.getElementsByClassName('saiba-mais')[0];
+const carousel = document.querySelector('.my-carousel');
+const carouselInner = document.querySelector('.my-carousel-inner');
 var isBelow = false;
 var position = 0;
+var pressed = false;
+var startOffset;
+var currentOffset;
+
+carousel.addEventListener('mouseenter', () => {
+    carousel.style.cursor = 'grab';    
+});
+
+carousel.addEventListener('mousedown', (event) => {
+    carousel.style.cursor = 'grabbing'; 
+    event.preventDefault();
+    pressed = true;
+    startOffset = event.offsetX - carouselInner.offsetLeft;
+});
+
+window.addEventListener('mouseup', () => {
+    carousel.style.cursor = 'grab';
+    pressed = false;
+});
+
+carousel.addEventListener('mousemove', (event) => {
+    if (!pressed) return;
+    currentOffset = event.offsetX;    
+    carouselInner.style.left = currentOffset - startOffset + 'px';
+    checkBoundary();
+});
+
+function checkBoundary() {
+    var inSlider = carouselInner.getBoundingClientRect();
+    var outSlider = carousel.getBoundingClientRect();
+    if (parseInt(carouselInner.style.left) > 0) {
+        carouselInner.style.left = '0';
+    }
+    if (inSlider.right < outSlider.right) {
+        carouselInner.style.left = '-' + (inSlider.width - outSlider.width) + 'px';    
+    }
+}
 
 document.addEventListener('scroll', () => {
     if (window.scrollY > 77 && isBelow == false) {
@@ -33,7 +72,9 @@ prevButton.addEventListener('click', () => {
     position--;
     if (position == 0) {
         prevButton.style.display = 'none';
-        coluna2.style.display = 'flex';
+        if (window.innerWidth > 1200) {
+            coluna2.style.display = 'flex';
+        }
         coluna1.style.display = 'flex';
         setTimeout(() => {
             coluna2.classList.add('coluna-2-up1');
@@ -75,7 +116,9 @@ prevButton.addEventListener('click', () => {
         setTimeout(() => {
             coluna3.children[3].classList.remove('element-hidden');
         }, 1250);
-        coluna4.style.display = 'flex';
+        if (window.innerWidth > 1200) {
+            coluna4.style.display = 'flex';
+        }        
         setTimeout(() => {
             coluna4.classList.remove('coluna-4-hidden');
         }, 1);
@@ -118,7 +161,9 @@ nextButton.addEventListener('click', () => {
         setTimeout(() => {
             coluna3.children[3].classList.remove('element-hidden');
         }, 1250);
-        coluna4.style.display = 'flex';
+        if (window.innerWidth > 1200) {
+            coluna4.style.display = 'flex';
+        }        
         setTimeout(() => {
             coluna4.classList.remove('coluna-4-hidden');
         }, 1);
@@ -146,7 +191,9 @@ nextButton.addEventListener('click', () => {
         setTimeout(() => {
             coluna5.children[3].classList.remove('element-hidden');
         }, 1250);
-        coluna6.style.display = 'flex';
+        if (window.innerWidth > 1200) {
+            coluna6.style.display = 'flex';
+        }        
         setTimeout(() => {
             coluna6.classList.remove('coluna-6-hidden');            
         }, 1);

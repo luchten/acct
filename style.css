@@ -18,6 +18,8 @@ h1, h2, p {
     margin: 0;
 }
 
+/* ===============================================MAIN-MENU==================================================== */
+
 .header img {
     width: 140px;
     position: absolute;
@@ -123,28 +125,13 @@ h1, h2, p {
     color: orange;
 }
 
-.my-container {
-    position: relative;
-    margin: 10px;
-    border-radius: 30px;
-    background-image: url(background.jpg);
-    background-size: cover;
-    background-position: center;
-    padding: 75px;
-}
-
-.col-6 {
-    overflow: hidden;
-}
-
 /* ===============================================COLUNA 1/3/5==================================================== */
 
 .coluna-1, .coluna-3, .coluna-5 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100%;    
-    /* padding: 50px; */
+    height: 100%;        
 }
 
 .coluna-1 h2, .coluna-3 h2, .coluna-5 h2 {
@@ -200,8 +187,7 @@ h1, h2, p {
 .coluna-4 {
     justify-content: center;
     transition: 0.75s;
-    display: none;
-    /* padding: 50px; */
+    display: none;    
 }
 
 .coluna-4-hidden {
@@ -226,7 +212,18 @@ h1, h2, p {
 }
 
 
-/* ===============================================COLUNA 1/2/3/4==================================================== */
+/* ===============================================COLUNA 1/2/3/4/5/6==================================================== */
+
+.my-container {
+    position: relative;
+    margin: 10px;
+    border-radius: 30px;
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 75px;
+    overflow: hidden;
+}
 
 .saiba-mais {
     background-color: black;
@@ -373,13 +370,21 @@ h1, h2, p {
 
 .my-carousel {
     display: flex;    
-    align-items: center;    
+    align-items: center;
+    justify-content: flex-end;
+    height: 450px; 
+    position: relative;
+    overflow: hidden;
 }
 
 .my-carousel-inner {
     display: flex; 
     overflow-x: hidden;       
     box-shadow: 0 0 50px rgb(240, 240, 240);
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
 }
 
 .my-carousel-item {
@@ -418,8 +423,11 @@ h1, h2, p {
 }
 
 .depoimentos {
-    margin-left: 125px;
-    min-width: 255px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+    height: 100%;
+    margin-left: 100px;
 }
 
 .depoimentos h3 {
@@ -436,6 +444,13 @@ h1, h2, p {
 .depoimentos h1 {
     font-weight: lighter;
     font-size: 50px;
+}
+
+#up {
+    display: none; 
+    align-items: center;    
+    padding-bottom: 75px;
+    margin: 0;
 }
 
 /* =======================================================MEDIA QUERY============================================================== */
@@ -494,5 +509,13 @@ h1, h2, p {
     .saiba-mais {
         font-size: 10px;
         width: 140px;
+    }
+
+    #down {
+        display: none;
+    }
+
+    #up {
+        display: flex;        
     }
 }
