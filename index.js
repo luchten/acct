@@ -18,15 +18,36 @@ const carouselInner = document.querySelector('.my-carousel-inner');
 var isBelow = false;
 var position = 0;
 var pressed = false;
+var entered = false;
 var startOffset;
 var currentOffset;
+var carouselItemWidth = carouselInner.firstElementChild.clientWidth + 40;
+
+setInterval(() => {
+    if (!entered) {
+        carouselInner.style.transition = '0.5s';
+        carouselInner.style.left = '-' + carouselItemWidth + 'px';
+        setTimeout(() => {
+            carouselInner.appendChild(carouselInner.firstElementChild);    
+        }, 500);
+        setTimeout(() => {
+            carouselInner.style.transition = 'none';
+            carouselInner.style.left = '0px';
+        }, 500);
+    }    
+}, 2500);
 
 carousel.addEventListener('mouseenter', () => {
-    carousel.style.cursor = 'grab';    
+    carousel.style.cursor = 'grab';
+    entered = true;
 });
 
+carousel.addEventListener('mouseleave', () => {
+    entered = false;
+})
+
 carousel.addEventListener('mousedown', (event) => {
-    carousel.style.cursor = 'grabbing'; 
+    carousel.style.cursor = 'grabbing';
     event.preventDefault();
     pressed = true;
     startOffset = event.offsetX - carouselInner.offsetLeft;
@@ -39,7 +60,7 @@ window.addEventListener('mouseup', () => {
 
 carousel.addEventListener('mousemove', (event) => {
     if (!pressed) return;
-    currentOffset = event.offsetX;    
+    currentOffset = event.offsetX;
     carouselInner.style.left = currentOffset - startOffset + 'px';
     checkBoundary();
 });
@@ -47,11 +68,13 @@ carousel.addEventListener('mousemove', (event) => {
 function checkBoundary() {
     var inSlider = carouselInner.getBoundingClientRect();
     var outSlider = carousel.getBoundingClientRect();
+
     if (parseInt(carouselInner.style.left) > 0) {
         carouselInner.style.left = '0';
     }
     if (inSlider.right < outSlider.right) {
-        carouselInner.style.left = '-' + (inSlider.width - outSlider.width) + 'px';    
+        console.log('ok');
+        carouselInner.style.left = '-' + (inSlider.width - outSlider.width) + 'px';
     }
 }
 
@@ -118,7 +141,7 @@ prevButton.addEventListener('click', () => {
         }, 1250);
         if (window.innerWidth > 1200) {
             coluna4.style.display = 'flex';
-        }        
+        }
         setTimeout(() => {
             coluna4.classList.remove('coluna-4-hidden');
         }, 1);
@@ -128,14 +151,14 @@ prevButton.addEventListener('click', () => {
         coluna5.children[2].classList.add('element-hidden');
         coluna5.children[3].classList.add('element-hidden');
         coluna6.style.display = 'none';
-        coluna6.classList.add('coluna-6-hidden');            
+        coluna6.classList.add('coluna-6-hidden');
     }
 });
 
 nextButton.addEventListener('click', () => {
     prevButton.style.display = 'block';
     position++;
-    if (position == 1) {        
+    if (position == 1) {
         coluna2.style.display = 'none';
         coluna2.classList.add('coluna-2-hidden');
         coluna2.classList.remove('coluna-2-up1');
@@ -163,7 +186,7 @@ nextButton.addEventListener('click', () => {
         }, 1250);
         if (window.innerWidth > 1200) {
             coluna4.style.display = 'flex';
-        }        
+        }
         setTimeout(() => {
             coluna4.classList.remove('coluna-4-hidden');
         }, 1);
@@ -193,9 +216,9 @@ nextButton.addEventListener('click', () => {
         }, 1250);
         if (window.innerWidth > 1200) {
             coluna6.style.display = 'flex';
-        }        
+        }
         setTimeout(() => {
-            coluna6.classList.remove('coluna-6-hidden');            
+            coluna6.classList.remove('coluna-6-hidden');
         }, 1);
     }
 });

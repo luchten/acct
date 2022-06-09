@@ -350,45 +350,45 @@ h1, h2, p {
 /* =======================================================CLIENTS============================================================== */
 
 .clients div {
-    padding: 50px;    
+    position: relative;
+    padding: 50px;   
 }
- .clients img {
-    transform: translateX(10%);
-    width: 80%;
+ .clients-img1, .clients-img2, .clients-img3, .clients-img4, .clients-img5, .clients-img6, .clients-img7, .clients-img8 {
+    position: absolute;    
+    width: 50%;
     transition: 1s;
     border-radius: 100%;
-    box-shadow: 0 0 50px rgb(240, 240, 240);
+    box-shadow: 0 0 50px rgb(200, 200, 200);
+    min-width: 100px;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
  }
 
-
 .clients img:hover {
-    width: 90%;
-    transform: translateX(5%) translateY(-5%);
+    width: 60%;    
 }
 
 /* =======================================================CAROUSEL============================================================== */
 
 .my-carousel {
-    display: flex;    
-    align-items: center;
-    justify-content: flex-end;
     height: 450px; 
     position: relative;
     overflow: hidden;
+    box-shadow: 0 0 50px rgb(240, 240, 240);
 }
 
 .my-carousel-inner {
-    display: flex; 
-    overflow-x: hidden;       
-    box-shadow: 0 0 50px rgb(240, 240, 240);
+    display: flex;         
     position: absolute;
-    pointer-events: none;
+    pointer-events: none;    
     top: 0;
-    left: 0;
+    left: 0;    
 }
 
 .my-carousel-item {
     min-width: 350px;
+    max-width: 350px;
     padding: 40px; 
     margin: 0 20px;   
     box-shadow: 0 0 50px rgb(240, 240, 240);
@@ -453,6 +453,131 @@ h1, h2, p {
     margin: 0;
 }
 
+/* =======================================================CASES============================================================== */
+
+.cases {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cases p {
+    color: gray;
+    font-size: 20px;
+    font-weight: bolder;
+    letter-spacing: 1px;
+}
+
+.cases h1 {
+    font-size: 50px;
+}
+
+.cases h2 {
+    font-size: 50px;
+    font-weight: 400;
+}
+
+.cases button {
+    height: 100%;  
+    background-color: transparent;  
+    padding: 15px 25px;
+    border: 1px solid black;
+    font-weight: 500;
+    font-size: 15px;
+    transition: 0.5s;
+}
+
+.cases button:hover {
+    background-color: black;
+    color: white;
+}
+
+.cases-div1, .cases-div2, .cases-div3 {
+    position: relative;
+    overflow: hidden;
+}
+
+.div-back {
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;    
+}
+
+.div1-img, .div2-img, .div3-img {
+    position: absolute;
+    width: 100%;    
+    transition: 1s ease-in-out;    
+}
+
+.div1-img:hover, .div2-img:hover, .div3-img:hover {
+    width: 110%;
+    transform: translateX(-5%) translateY(-5%);
+    filter: brightness(30%);
+}
+
+.cases-div1:hover .case-info h1 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cases-div2:hover .case-info h1 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cases-div3:hover .case-info h1 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cases-div1:hover .case-info p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cases-div2:hover .case-info p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.cases-div3:hover .case-info p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.case-info {
+    text-align: center;
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: white;
+    pointer-events: none;
+}
+
+.case-info h1 {
+    font-size: 30px;
+    margin-bottom: 25px;
+    transform: translateY(-30px);
+    transition: 0.5s;
+    opacity: 0;
+}
+
+.case-info p {
+    font-size: 17px;
+    font-weight: 500;
+    transform: translateY(30px);
+    opacity: 0;
+    transition: 0.5s;
+    transition-delay: 0.1s;
+}
+
+.case-info span {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
 /* =======================================================MEDIA QUERY============================================================== */
 
 @media (max-width: 700px) {
@@ -476,6 +601,20 @@ h1, h2, p {
 
     .card {
         margin-bottom: 25px;
+    }
+
+    .cases {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cases h1, .cases h2 {
+        display: inline;
+        margin-right: 10px;        
+    }
+
+    .cases button {
+        margin-top: 15px;
     }
 }
 
