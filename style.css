@@ -371,11 +371,17 @@ h1, h2, p {
 
 /* =======================================================CAROUSEL============================================================== */
 
+.carousel-container {
+    background-image: url(background2.png);    
+    background-repeat: no-repeat;
+    background-position: left;
+    padding: 190px 0;
+}
+
 .my-carousel {
     height: 450px; 
     position: relative;
-    overflow: hidden;
-    box-shadow: 0 0 50px rgb(240, 240, 240);
+    overflow: hidden;    
 }
 
 .my-carousel-inner {
@@ -383,15 +389,17 @@ h1, h2, p {
     position: absolute;
     pointer-events: none;    
     top: 0;
-    left: 0;    
+    left: 0;
+    height: 100%;   
 }
 
 .my-carousel-item {
+    background-color: white;
     min-width: 350px;
     max-width: 350px;
     padding: 40px; 
     margin: 0 20px;   
-    box-shadow: 0 0 50px rgb(240, 240, 240);
+    border: 1px outset;
 }
 
 .my-carousel-item p {
@@ -716,24 +724,71 @@ h1, h2, p {
     font-size: 45px;    
 }
 
-.newsletter p, .news-input label {
-    margin: 30px 0;
+.newsletter p {
+    margin: 50px 0;
     letter-spacing: 1px;
     font-size: 17px;    
 }
 
+.news-header label {
+    font-size: 18px;
+}
+
+.news-header {
+    display: flex;
+    justify-content: center;
+}
+
 .news-input {
-    display: inline;    
+    margin: 0 10px;
+    width: 100%;
 }
 
 .news-input input {
     border: 1px solid lightgray;
     padding: 15px;
+    width: 100%;
 }
 
 .news-input span {
     font-weight: bold;
     color: red;
+}
+
+.newsletter button {
+    width: 100%;
+    background-color: black;
+    transition: 0.5s;
+    color: white;
+    border: 1px solid black;
+    padding: 10px 0;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.newsletter button:hover {
+    background-color: orange;
+    border-color: orange;
+    color: black;
+}
+
+.newsletter-container {
+    background-image: url(background1.jpg);    
+    background-repeat: no-repeat;
+    background-position: left;
+    padding: 50px 0;
+}
+
+/* =======================================================FOOTER============================================================== */
+
+.footer-card h1 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.footer-card p {
+    font-size: 18px;
+    line-height: 2;
 }
 
 /* =======================================================MEDIA QUERY============================================================== */
